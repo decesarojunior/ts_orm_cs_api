@@ -1,6 +1,8 @@
-import {Entity, Column, PrimaryColumn, ManyToOne, JoinColumn} from 'typeorm';
+import {Entity, Column, PrimaryColumn, ManyToOne, JoinColumn, ManyToMany, JoinTable, OneToMany} from 'typeorm';
 
 import Endereco from './Endereco';
+import Patente from './Patente';
+import Compra from './Compra';
 	
 @Entity('tb_jogador')
 class Jogador {
@@ -23,6 +25,16 @@ class Jogador {
     @ManyToOne(type => Endereco)
     @JoinColumn({name: "endereco_id", referencedColumnName: "id"})
     endereco: Endereco;
+
+    //agregacao
+    @ManyToMany(() => Patente)
+    @JoinTable({name : "tb_jogador_patente", joinColumn: {name: "jogador_nickname", referencedColumnName: "nickname"}, inverseJoinColumn: {name: "patente_id", referencedColumnName: "id"}})
+    patentes: Patente[];
+
+    //agregacao por composicao
+    @OneToMany(() => Compra, compra => compra.jogador)
+    compras: Compra[];
+
 } 	
 
 export default Jogador;

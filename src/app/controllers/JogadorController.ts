@@ -82,7 +82,7 @@ class JogadorController {
 
         const repository = getRepository(Jogador);
 
-        const lista = await repository.createQueryBuilder('tb_jogador').getMany();        
+        const lista = await repository.createQueryBuilder('tb_jogador').getMany();
 
         return res.json(lista);
 
