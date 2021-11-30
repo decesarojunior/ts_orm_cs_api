@@ -84,6 +84,8 @@ class JogadorController {
 
         const lista = await repository.createQueryBuilder('tb_jogador').getMany();
 
+        
+
         return res.json(lista);
 
     }
