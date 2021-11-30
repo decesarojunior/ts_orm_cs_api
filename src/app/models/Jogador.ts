@@ -3,6 +3,7 @@ import {Entity, Column, PrimaryColumn, ManyToOne, JoinColumn, ManyToMany, JoinTa
 import Endereco from './Endereco';
 import Patente from './Patente';
 import Compra from './Compra';
+import Artefato from './Artefato';
 	
 @Entity('tb_jogador')
 class Jogador {
@@ -34,6 +35,11 @@ class Jogador {
     //agregacao por composicao
     @OneToMany(() => Compra, compra => compra.jogador)
     compras: Compra[];
+
+    //agregacao
+    @ManyToMany(() => Artefato)
+    @JoinTable({name : "tb_jogador_artefato", joinColumn: {name: "jogador_nickname", referencedColumnName: "nickname"}, inverseJoinColumn: {name: "artefato_id", referencedColumnName: "id"}})
+    artefatos: Artefato[];
 
 } 	
 

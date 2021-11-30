@@ -26,6 +26,8 @@ class CompraController {
                 
     }
 
+    
+
 }
 
 export default new CompraController();

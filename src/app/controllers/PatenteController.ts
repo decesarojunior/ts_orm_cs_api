@@ -18,11 +18,11 @@ class PatenteController {
     
         const repository = getRepository(Patente);
 
-        const j = repository.create(req.body); //cria a entidade Endereco
+        const p = repository.create(req.body); //cria a entidade Endereco
 
-        await repository.save(j); //persiste a entidade na tabela.
+        await repository.save(p); //persiste a entidade na tabela.
 
-        return res.json(j);
+        return res.json(p);
                 
     }
 
