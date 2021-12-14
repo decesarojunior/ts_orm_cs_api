@@ -1,7 +1,8 @@
 import 'reflect-metadata';
-import express from 'express';
+import express, { application } from 'express';
 
-import './database/connect.ts'
+import { setup } from "./database/connect"
+
 import routes  from './routes';
 
 
@@ -19,5 +20,9 @@ app.use(function(req, res, next) {
 
 app.use(routes);
 
-app.listen(3000, () => console.log('Server started at http://localhost:3000'));
+
+export {app, setup};
+
+
+
 

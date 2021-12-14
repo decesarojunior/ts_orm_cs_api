@@ -6,10 +6,10 @@ class Patente {
     @PrimaryColumn('int')
     id: number;
     
-    @Column('text')
+    @Column('varchar')
     nome: string;
     
-    @Column('text')
+    @Column('varchar')
     cor: string;
        
 } 	

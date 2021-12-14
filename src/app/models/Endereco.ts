@@ -1,4 +1,4 @@
-import {Entity, Column, PrimaryColumn} from 'typeorm';
+import {Entity, Column, PrimaryColumn, IsNull} from 'typeorm';
 	
 @Entity('tb_endereco')
 class Endereco {
@@ -9,7 +9,7 @@ class Endereco {
     @Column("varchar", { length: 8 })
     cep: string;
 
-    @Column("varchar", { length: 100 })
+    @Column("varchar", { length: 100 , nullable: true})
     complemento: string;
         
 } 	

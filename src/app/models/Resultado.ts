@@ -1,0 +1,19 @@
+import {Entity, Column, ManyToOne, JoinColumn} from "typeorm";
+import {ResultadoID} from "./ResultadoID";
+import {Status} from './Status';
+
+
+@Entity('tb_resultado')
+export default class Resultado {
+    
+    //https://typeorm.io/#/embedded-entities
+    @Column(() => ResultadoID)
+    id: ResultadoID;
+
+    @Column({
+        type: "enum",
+        enum: Status,        
+    })
+    status: Status;
+
+}

@@ -7,7 +7,7 @@ export default abstract class Artefato {
     @PrimaryColumn('int')
     id: number;
     
-    @Column('text')
+    @Column('varchar')
     nome: string;
 
     @Column()

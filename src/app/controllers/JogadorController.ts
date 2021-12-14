@@ -15,7 +15,7 @@ class JogadorController {
 
         if(nicknameExists){
 
-            await repository.remove(nickname); 
+            await repository.remove(nicknameExists); 
 
             return res.sendStatus(204);
 
@@ -82,9 +82,9 @@ class JogadorController {
 
         const repository = getRepository(Jogador);
 
-        const lista = await repository.createQueryBuilder('tb_jogador').getMany();
-
-        
+        //realiza um innerjoin para recuperar os dados do endereco de cada jogador.
+        //realiza um left joint para trazer os dados da tabela associativa (tb_jogador_patente)
+        const lista = await repository.createQueryBuilder('tb_jogador').innerJoinAndSelect("tb_jogador.endereco", "endereco").leftJoinAndSelect("tb_jogador.patentes", "patente").getMany();
 
         return res.json(lista);
 

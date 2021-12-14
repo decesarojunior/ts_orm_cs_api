@@ -27,8 +27,8 @@ class Jogador {
     @JoinColumn({name: "endereco_id", referencedColumnName: "id"})
     endereco: Endereco;
 
-    //agregacao
-    @ManyToMany(() => Patente)
+    //agregacao, remove em cascata.
+    @ManyToMany(() => Patente, { cascade: true})
     @JoinTable({name : "tb_jogador_patente", joinColumn: {name: "jogador_nickname", referencedColumnName: "nickname"}, inverseJoinColumn: {name: "patente_id", referencedColumnName: "id"}})
     patentes: Patente[];
 
