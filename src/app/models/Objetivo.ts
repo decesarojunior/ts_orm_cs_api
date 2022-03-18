@@ -1,4 +1,6 @@
-import {Entity, Column, PrimaryColumn, ManyToOne, JoinColumn} from 'typeorm';		
+import {Entity, Column, PrimaryColumn, ManyToOne, JoinColumn, ManyToMany, JoinTable} from 'typeorm';
+
+import Local from './Local';
 
 @Entity('tb_objetivo')
 export default class Objetivo {
@@ -11,4 +13,10 @@ export default class Objetivo {
 
     @Column()
     pontos: number;
+
+    //agregacao, remove em cascata.
+    @ManyToMany(() => Local, { cascade: true})
+    @JoinTable({name : "tb_objetivo_local", joinColumn: {name: "objetivo_id", referencedColumnName: "id"}, inverseJoinColumn: {name: "local_id", referencedColumnName: "id"}})
+    locais: Local[];
+
 }

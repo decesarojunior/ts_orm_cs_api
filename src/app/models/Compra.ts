@@ -1,6 +1,7 @@
-import {Entity, Column, PrimaryColumn, ManyToOne, JoinColumn} from 'typeorm';
+import {Entity, Column, PrimaryColumn, ManyToOne, JoinColumn, OneToMany} from 'typeorm';
 
 import Jogador from './Jogador';
+import ItensCompra from './ItensCompra';
 	
 @Entity('tb_compra')
 class Compra {
@@ -18,6 +19,10 @@ class Compra {
     @ManyToOne(type => Jogador)
     @JoinColumn({name: "jogador_nickname", referencedColumnName: "nickname"})
     jogador: Jogador;
+
+    //agregacao por composicao
+    @OneToMany(() => ItensCompra, item => item.compra)
+    itens: ItensCompra[];
 } 	
 
 export default Compra;
